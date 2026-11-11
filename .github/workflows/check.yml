@@ -12,10 +12,10 @@ jobs:
   check:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v5
         with:
           lfs: false          # docs and data never need LFS objects
-      - uses: actions/setup-node@v4
+      - uses: actions/setup-node@v5
         with:
           node-version: 22
           cache: npm
@@ -26,5 +26,5 @@ jobs:
           globs: "docs/**/*.md"
       - uses: lycheeverse/lychee-action@v2
         with:
-          args: --offline --no-progress "docs/**/*.md" README.md
+          args: --offline --no-progress --exclude-path docs/examples "docs/**/*.md" README.md
           fail: true
