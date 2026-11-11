@@ -2,7 +2,7 @@
 
 Open-source archive, wiki and simulator for **1990-2002 Honda Civics** (BR, JP and US markets): maintenance, longevity, electrical, tuning and model identification.
 
-> **Docs:** https://ej8civic.github.io/open-civic/ (coming in Phase 2) <br>
+> **Docs:** https://ej8civic.github.io/open-civic/ <br>
 > **Simulator:** https://ej8civic.github.io/open-civic/sim/ (coming in Phase 3)
 
 <br>
@@ -59,7 +59,10 @@ graph LR
 npm install
 npm run gen       # regenerate tables in docs from data/
 npm run check     # what CI runs: tables up to date + schemas + source citations
+npm run site:dev  # docs site at http://localhost:4321/open-civic/
 ```
+
+The site (`apps/site`, Astro Starlight) reads `docs/` directly. Pushing to `main` deploys it to GitHub Pages.
 
 Large files: `git lfs pull --include="sources/public/<folder>/*"`. Clones skip LFS by default.
 

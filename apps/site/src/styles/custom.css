@@ -1,0 +1,25 @@
+/* Open Civic theme: Honda-ish red accent, neutral greys. */
+:root {
+	--sl-color-accent-low: #3d0d0f;
+	--sl-color-accent: #d3202a;
+	--sl-color-accent-high: #ffc9cb;
+}
+:root[data-theme='light'] {
+	--sl-color-accent-low: #ffe1e2;
+	--sl-color-accent: #c4141d;
+	--sl-color-accent-high: #5c0a0e;
+}
+
+/* Mermaid diagrams: centered, no code-block chrome. */
+pre.mermaid {
+	background: transparent;
+	border: none;
+	text-align: center;
+	overflow-x: auto;
+}
+
+/* Wide pinout tables scroll instead of breaking the layout. */
+.sl-markdown-content table {
+	display: block;
+	overflow-x: auto;
+}

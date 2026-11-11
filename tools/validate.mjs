@@ -38,11 +38,11 @@ for (const f of walk(join(ROOT, 'data'), /\.ya?ml$/)) {
   if (f.includes(`pinouts`) && !vPin(d)) report(rel(f), vPin);
 }
 
-// 3. Docs frontmatter (skip templates, examples and folder README indexes)
+// 3. Docs frontmatter (skip templates, examples, folder README indexes and the site home page)
 const vFm = schema('frontmatter');
 for (const f of walk(join(ROOT, 'docs'), /\.md$/)) {
   const r = rel(f);
-  if (r.startsWith('docs/_templates/') || r.startsWith('docs/examples/') || r.endsWith('/README.md')) continue;
+  if (r.startsWith('docs/_templates/') || r.startsWith('docs/examples/') || r.endsWith('/README.md') || r === 'docs/index.md') continue;
   const { data } = frontmatter(readFileSync(f, 'utf8'));
   if (!data) { fail(r, 'missing frontmatter'); continue; }
   if (!vFm(data)) report(r, vFm);
