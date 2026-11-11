@@ -57,8 +57,10 @@ Why this matters, what can go wrong, what you need to know first.
 
 <!--
 Rules:
+
 - One topic per file. Keep it short; split if it grows past ~150 lines.
 - Every number needs a source (id + page). No source, no number.
-- Tables that exist in data/ must be generated: <!-- gen:... --> blocks (npm run gen).
+- Tables that exist in data/ must be generated with "gen:" marker blocks (see tools/gen-tables.mjs, run npm run gen).
 - Use <br> between sections instead of --- or <hr>.
+
 -->

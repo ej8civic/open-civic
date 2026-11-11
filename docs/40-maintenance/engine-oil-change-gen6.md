@@ -30,6 +30,7 @@ The most important job for a long-lived Civic. Clean oil at the right level prot
 - Hot oil burns. Loosen the drain bolt carefully, with gloves.
 - Honda allows replacing the filter every *other* change under normal use. For an old engine, replacing it every time is cheap insurance.
 - D16Y8 and D16Y5 take less oil than the D16Y7. Check your engine code before buying oil.
+
 > VTEC (D16Y5, D16Y8, B16A2) is switched by oil pressure. Low or dirty oil can stop VTEC from engaging.
 
 <br>

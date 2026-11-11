@@ -1,0 +1,4 @@
+{
+  // docs/examples holds the author's raw format reference; not linted.
+  "ignores": ["docs/examples/**"]
+}
