@@ -1,0 +1,41 @@
+# Upstream repositories, pinned to a commit. Paths match ids in sources/registry.yaml.
+# All are shallow. rusefi is large, so it is skipped by default (update = none):
+#   git submodule update --init --checkout sources/repos/rusefi
+# Bump a pin:  git submodule update --remote sources/repos/<id>
+
+[submodule "sources/repos/rusefi"]
+	path = sources/repos/rusefi
+	url = https://github.com/rusefi/rusefi.git
+	branch = master
+	shallow = true
+	update = none
+[submodule "sources/repos/proteus-honda-obd1"]
+	path = sources/repos/proteus-honda-obd1
+	url = https://github.com/rusefi/proteus-Honda-OBD1-adapter.git
+	branch = main
+	shallow = true
+[submodule "sources/repos/proteus-honda-obd2a"]
+	path = sources/repos/proteus-honda-obd2a
+	url = https://github.com/rusefi/proteus-Honda-OBD2A-adapter.git
+	branch = main
+	shallow = true
+[submodule "sources/repos/honda-diagnostic-suite"]
+	path = sources/repos/honda-diagnostic-suite
+	url = https://github.com/rusefi/HondaDiagnosticSuite.git
+	branch = main
+	shallow = true
+[submodule "sources/repos/obdb-honda-civic"]
+	path = sources/repos/obdb-honda-civic
+	url = https://github.com/OBDb/Honda-Civic.git
+	branch = main
+	shallow = true
+[submodule "sources/repos/khalleb-headunit"]
+	path = sources/repos/khalleb-headunit
+	url = https://github.com/khalleb/honda-civic-headunit.git
+	branch = main
+	shallow = true
+[submodule "sources/repos/open-hcop"]
+	path = sources/repos/open-hcop
+	url = https://github.com/icelord75/openHCOP.git
+	branch = master
+	shallow = true

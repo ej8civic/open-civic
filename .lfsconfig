@@ -1,0 +1,4 @@
+# Clones skip LFS downloads by default to save the repo's LFS bandwidth.
+# Fetch what you need, e.g.:  git lfs pull --include="sources/public/rusefi/*"
+[lfs]
+	fetchexclude = *

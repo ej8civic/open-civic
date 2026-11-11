@@ -1,0 +1,30 @@
+# Gen 6 US engines (1996-2000)
+# Source: honda-sm-civic-96-00, section 1 (engine number) and section 8 (lubrication).
+
+source: { id: honda-sm-civic-96-00 }
+
+engines:
+  - id: D16Y7
+    description: 1.6 L SOHC 16-valve, sequential multiport fuel injection
+    vtec: none
+    built_in: USA
+    oil: { change_with_filter_l: 3.6, change_without_filter_l: 3.3, overhaul_l: 4.3, drain_bolt_nm: 44 }
+
+  - id: D16Y8
+    description: 1.6 L SOHC VTEC 16-valve, sequential multiport fuel injection
+    vtec: VTEC
+    built_in: USA
+    oil: { change_with_filter_l: 3.3, change_without_filter_l: 3.0, overhaul_l: 3.7, drain_bolt_nm: 39 }
+
+  - id: D16Y5
+    description: 1.6 L SOHC VTEC-E 16-valve, sequential multiport fuel injection
+    vtec: VTEC-E
+    built_in: Japan
+    oil: { change_with_filter_l: 3.3, change_without_filter_l: 3.0, overhaul_l: 3.7, drain_bolt_nm: 39 }
+
+  - id: B16A2
+    description: 1.6 L DOHC VTEC 16-valve, sequential multiport fuel injection (EM1 coupe, 1999-2000)
+    vtec: VTEC
+    oil: { change_with_filter_l: 4.0, change_without_filter_l: 3.7, overhaul_l: 4.8, drain_bolt_nm: 44 }
+
+oil_pages: "8-6, 8-7"

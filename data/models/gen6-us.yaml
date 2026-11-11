@@ -1,0 +1,35 @@
+# Gen 6 Civic, US market, 1996-2000: VIN line codes and engines
+# Source: honda-sm-civic-96-00, section 1 "Chassis and Paint Codes", pages 1-2 onward.
+
+generation: gen6
+market: US
+years: [1996, 2000]
+source: { id: honda-sm-civic-96-00, pages: "1-2..1-31" }
+
+# VIN positions 4-5 (+6) = "Line, Body and Engine Type"
+line_codes:
+  - { code: EJ6, engine: D16Y7, bodies: [2-door hatchback, 4-door sedan, 2-door coupe], years: [1996, 2000] }
+  - { code: EJ7, engine: D16Y5, bodies: [2-door coupe],                                  years: [1996, 2000] }
+  - { code: EJ8, engine: D16Y8, bodies: [2-door coupe, 4-door sedan],                    years: [1996, 2000] }
+  - { code: EM1, engine: B16A2, bodies: [2-door coupe],                                  years: [1999, 2000] }
+
+model_year_codes: { T: 1996, V: 1997, W: 1998, X: 1999, Y: 2000 }
+
+wmi:  # VIN positions 1-3
+  1HG: Honda of America Mfg., Inc. (USA)
+  2HG: Honda of Canada Mfg., Inc.
+  JHM: Honda Motor Co. (Japan)
+
+factory_codes:  # VIN position 11
+  L: East Liberty, Ohio, USA
+  H: Alliston, Ontario, Canada
+  S: Suzuka, Japan
+
+transmissions:
+  - { code: S40,  type: 5-speed manual }
+  - { code: A4RA, type: 4-speed automatic }
+  - { code: M4VA, type: CVT (D16Y5 only) }
+
+notes:
+  - "EK3/EK4/EK9 are JDM/European chassis codes; US VINs for this generation use EJ6/EJ7/EJ8/EM1."
+  - "VIN position 8 is the vehicle grade (DX, HX, LX, EX...); its digit meaning changes by body and year, decode it with the page for your year."

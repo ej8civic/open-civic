@@ -1,0 +1,39 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://ej8civic.github.io/open-civic/schemas/registry.schema.json",
+  "title": "Open Civic source registry",
+  "type": "object",
+  "required": ["sources"],
+  "properties": {
+    "sources": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["id", "title", "type", "trust", "license", "policy", "status"],
+        "additionalProperties": false,
+        "properties": {
+          "id": { "type": "string", "pattern": "^[a-z0-9]+(-[a-z0-9]+)*$" },
+          "title": { "type": "string" },
+          "publisher": { "type": "string" },
+          "author": { "type": "string" },
+          "date": { "type": "string" },
+          "url": { "type": "string", "format": "uri" },
+          "type": { "enum": ["official", "open-source", "community", "vendor", "forum"] },
+          "trust": { "enum": ["A", "B", "C", "D"] },
+          "license": { "type": "string" },
+          "policy": { "enum": ["redistribute", "cite-only", "link-only", "lead-only"] },
+          "local": { "type": "string" },
+          "covers": { "type": "object" },
+          "status": { "enum": ["pending", "approved", "rejected"] },
+          "approved_by": { "type": "string" },
+          "approved_on": { "type": "string" },
+          "notes": { "type": "string" }
+        },
+        "allOf": [
+          { "if": { "properties": { "status": { "const": "approved" } } },
+            "then": { "required": ["approved_by", "approved_on"] } }
+        ]
+      }
+    }
+  }
+}

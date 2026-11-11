@@ -1,0 +1,48 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://ej8civic.github.io/open-civic/schemas/pinout.schema.json",
+  "title": "Open Civic ECU pinout",
+  "type": "object",
+  "required": ["id", "title", "ecu", "source", "connectors"],
+  "properties": {
+    "id": { "type": "string" },
+    "title": { "type": "string" },
+    "ecu": { "enum": ["OBD0", "OBD1", "OBD2A", "OBD2B"] },
+    "years": { "type": "array", "items": { "type": "integer" }, "minItems": 2, "maxItems": 2 },
+    "chassis": { "type": "array", "items": { "type": "string" } },
+    "engines": { "type": "array", "items": { "type": "string" } },
+    "markets": { "type": "array", "items": { "enum": ["BR", "JP", "US"] } },
+    "source": { "type": "object", "required": ["id"] },
+    "cross_check": { "type": "object", "required": ["id"] },
+    "footnotes": { "type": "object", "additionalProperties": { "type": "string" } },
+    "connectors": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["id", "pins", "terminals"],
+        "properties": {
+          "id": { "type": "string" },
+          "pins": { "type": "integer" },
+          "role": { "type": "string" },
+          "applies": { "type": "array", "items": { "type": "string" } },
+          "terminals": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "required": ["pin", "wire", "abbr", "name"],
+              "additionalProperties": false,
+              "properties": {
+                "pin": { "type": "integer", "minimum": 1 },
+                "wire": { "type": "string", "pattern": "^(LT |DK )?[A-Z]{3}(/[A-Z]{3})?$" },
+                "abbr": { "type": "string" },
+                "name": { "type": "string" },
+                "signal": { "type": "string" },
+                "applies": { "type": "array", "items": { "type": "string" } }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}

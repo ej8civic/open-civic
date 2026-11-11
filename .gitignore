@@ -1,0 +1,16 @@
+# Copyrighted sources: kept locally, never committed (see sources/README.md)
+sources/private/*
+!sources/private/README.md
+
+# Build / deps
+node_modules/
+dist/
+.astro/
+.venv/
+__pycache__/
+
+# OS / editor
+.DS_Store
+Thumbs.db
+.vscode/
+.idea/

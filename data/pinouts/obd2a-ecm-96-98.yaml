@@ -1,0 +1,139 @@
+# OBD2A ECM/PCM terminal arrangement, US Civic '96-'98 (and '99-'00 D16Y5 M/T)
+# Facts restated from honda-sm-civic-96-00, section 11, pages 11-88 to 11-91.
+# Wire side of female terminals. "applies" = Honda footnote conditions; empty = all.
+# Signal text is a short paraphrase of Honda's "Signal" column (12 V battery reference).
+
+id: obd2a-ecm-96-98
+title: OBD2A ECM/PCM pinout ('96-'98 Civic)
+ecu: OBD2A
+years: [1996, 1998]
+chassis: [EJ6, EJ7, EJ8]
+engines: [D16Y5, D16Y7, D16Y8]
+markets: [US]
+source: { id: honda-sm-civic-96-00, pages: "11-88..11-91" }
+cross_check: { id: rusefi-wiki-civic-1996 }
+
+footnotes:
+  "*1": USA model
+  "*2": A/T (D16Y7, D16Y8)
+  "*3": CVT (D16Y5)
+  "*4": A/T and D16Y7
+  "*5": Except A/T and D16Y7
+  "*6": A/T (D16Y8)
+  "*7": CVT (D16Y5) and D16Y8
+  "*8": "'96 D16Y8 coupe, '97 D16Y8 (coupe all, sedan KL), '98 D16Y5, '98 D16Y8, '99-'00 D16Y5 M/T"
+  "*10": M/T (D16Y5)
+  "*11": Except M/T (D16Y5)
+  "*12": D16Y5, D16Y8
+  "*14": D16Y7
+  "*15": "'97 D16Y7 (coupe KL, sedan KL/LX), '98 D16Y7"
+
+connectors:
+  - id: A
+    pins: 32
+    role: Injectors, ignition, power, grounds, actuators
+    terminals:
+      - { pin: 1,  wire: YEL,        abbr: INJ4,    name: No. 4 fuel injector,          signal: duty-controlled ground while running }
+      - { pin: 2,  wire: BLU,        abbr: INJ3,    name: No. 3 fuel injector,          signal: duty-controlled ground while running }
+      - { pin: 3,  wire: RED,        abbr: INJ2,    name: No. 2 fuel injector,          signal: duty-controlled ground while running }
+      - { pin: 4,  wire: BRN,        abbr: INJ1,    name: No. 1 fuel injector,          signal: duty-controlled ground while running }
+      - { pin: 5,  wire: BLK/WHT,    abbr: SO2SHTC, name: Secondary O2 sensor heater,   signal: "key ON: 12 V; warm & running: duty controlled" }
+      - { pin: 6,  wire: BLK/WHT,    abbr: PO2SHTC, name: Primary O2 sensor heater,     signal: "key ON: 12 V; warm & running: duty controlled" }
+      - { pin: 7,  wire: RED,        abbr: ESOL,    name: EGR control solenoid,         signal: duty controlled when EGR active, applies: ["*3"] }
+      - { pin: 7,  wire: PNK,        abbr: E-EGR,   name: EGR valve,                    signal: duty controlled when EGR active, applies: ["*10"] }
+      - { pin: 8,  wire: GRN/YEL,    abbr: VTS,     name: VTEC solenoid valve,          signal: "low rpm: 0 V; high rpm: 12 V", applies: ["*12"] }
+      - { pin: 9,  wire: BRN/BLK,    abbr: LG1,     name: Logic ground 1,               signal: "< 1.0 V always" }
+      - { pin: 10, wire: BLK,        abbr: PG1,     name: Power ground 1,               signal: "< 1.0 V always" }
+      - { pin: 11, wire: YEL/BLK,    abbr: IGP1,    name: ECM power source 1,           signal: "key ON: 12 V; key OFF: 0 V" }
+      - { pin: 12, wire: BLK/BLU,    abbr: IACV,    name: Idle air control valve,       signal: duty controlled while running, applies: ["*5"] }
+      - { pin: 13, wire: ORN,        abbr: IACVN,   name: IAC valve negative side,      signal: duty controlled while running, applies: ["*4"] }
+      - { pin: 14, wire: BLK/BLU,    abbr: IACVP,   name: IAC valve positive side,      signal: duty controlled while running, applies: ["*4"] }
+      - { pin: 15, wire: RED/YEL,    abbr: PCS,     name: EVAP purge control solenoid,  signal: "coolant < 68 °C: 12 V; above: duty controlled" }
+      - { pin: 16, wire: GRN/YEL,    abbr: FLR,     name: Fuel pump relay,              signal: "0 V for 2 s after key ON, then 12 V" }
+      - { pin: 17, wire: BLK/RED,    abbr: ACC,     name: A/C clutch relay,             signal: "compressor ON: 0 V; OFF: 12 V" }
+      - { pin: 18, wire: GRN/ORN,    abbr: MIL,     name: Malfunction indicator lamp,   signal: "MIL ON: 0 V; OFF: 12 V" }
+      - { pin: 19, wire: WHT/GRN,    abbr: ALTC,    name: Alternator control,           signal: "warm, running: 12 V; small load while driving: 0 V", applies: ["*1"] }
+      - { pin: 20, wire: YEL/GRN,    abbr: ICM,     name: Ignition control module,      signal: "key ON: 12 V; running: ~10 V (rpm dependent)" }
+      - { pin: 22, wire: BRN/BLK,    abbr: LG2,     name: Logic ground 2,               signal: "< 1.0 V always" }
+      - { pin: 23, wire: BLK,        abbr: PG2,     name: Power ground 2,               signal: "< 1.0 V always" }
+      - { pin: 24, wire: YEL/BLK,    abbr: IGP2,    name: ECM power source 2,           signal: "key ON: 12 V; key OFF: 0 V" }
+      - { pin: 25, wire: WHT/RED,    abbr: VREF,    name: Reference voltage to TCM,     signal: "key ON: ~5 V", applies: ["*6"] }
+      - { pin: 27, wire: GRN,        abbr: FANC,    name: Radiator fan relay,           signal: "fan running: 0 V; stopped: 12 V", applies: ["*1"] }
+      - { pin: 28, wire: BLU,        abbr: 2WBS,    name: EVAP bypass solenoid,         signal: "key ON: 12 V", applies: ["*8", "*15"] }
+      - { pin: 29, wire: LT GRN/WHT, abbr: VSV,     name: EVAP canister vent shut valve, signal: "key ON: 12 V", applies: ["*8", "*15"] }
+      - { pin: 30, wire: WHT/RED,    abbr: SLU,     name: Interlock control unit,       signal: "key ON + brake pressed: 12 V", applies: ["*3"] }
+
+  - id: B
+    pins: 25
+    role: Automatic transmission (PCM only). Not populated on manual-transmission cars.
+    applies: ["*2"]
+    terminals:
+      - { pin: 1,  wire: WHT,     abbr: LS-,    name: Linear solenoid (-),            signal: "key ON: pulses" }
+      - { pin: 2,  wire: RED,     abbr: LS+,    name: Linear solenoid (+),            signal: "key ON: pulses" }
+      - { pin: 3,  wire: BLU/YEL, abbr: SHA,    name: Shift control solenoid A,       signal: "2nd/3rd: 12 V; 1st/4th: ~0 V" }
+      - { pin: 4,  wire: GRN/BLK, abbr: LCB,    name: Lock-up control solenoid B,     signal: "lock-up ON: 12 V; OFF: 0 V" }
+      - { pin: 5,  wire: YEL,     abbr: LCA,    name: Lock-up control solenoid A,     signal: "lock-up ON: 12 V; OFF: 0 V" }
+      - { pin: 8,  wire: PNK,     abbr: ATPD3,  name: A/T gear position switch (D3),  signal: "in D3: 0 V; else 12 V" }
+      - { pin: 11, wire: GRN/WHT, abbr: SHB,    name: Shift control solenoid B,       signal: "1st/2nd: 12 V; 3rd/4th: ~0 V" }
+      - { pin: 12, wire: WHT/RED, abbr: SLU,    name: Interlock control unit,         signal: "key ON + brake pressed: 0 V" }
+      - { pin: 13, wire: GRN/BLK, abbr: D4IND,  name: D4 indicator light,             signal: "light ON: 12 V; OFF: 0 V" }
+      - { pin: 14, wire: WHT,     abbr: NMSG,   name: Mainshaft speed sensor ground }
+      - { pin: 15, wire: RED,     abbr: NM,     name: Mainshaft speed sensor,         signal: "running: pulses" }
+      - { pin: 16, wire: WHT,     abbr: ATPR,   name: A/T gear position switch (R),   signal: "in R: 0 V; else 12 V" }
+      - { pin: 17, wire: BLU,     abbr: ATP2,   name: A/T gear position switch (2),   signal: "in 2: 0 V; else 12 V" }
+      - { pin: 22, wire: GRN,     abbr: NCSG,   name: Countershaft speed sensor ground }
+      - { pin: 23, wire: BLU,     abbr: NC,     name: Countershaft speed sensor,      signal: "key ON, wheels turning: pulses" }
+      - { pin: 24, wire: YEL,     abbr: ATPD4,  name: A/T gear position switch (D4),  signal: "in D4: 0 V; else 5 V" }
+      - { pin: 25, wire: LT GRN,  abbr: ATPNP,  name: A/T gear position switch (N/P), signal: "in N or P: 0 V; else 12 V" }
+
+  - id: C
+    pins: 31
+    role: Crank/cam sensors, switches, diagnostics, backup power
+    terminals:
+      - { pin: 1,  wire: BLU/RED, abbr: CKFP,  name: CKF sensor (+),                 signal: "running: pulses" }
+      - { pin: 2,  wire: BLU,     abbr: CKPP,  name: CKP sensor (+),                 signal: "running: pulses" }
+      - { pin: 3,  wire: GRN,     abbr: TDCP,  name: TDC sensor (+),                 signal: "running: pulses" }
+      - { pin: 4,  wire: YEL,     abbr: CYPP,  name: CYP sensor (+),                 signal: "running: pulses" }
+      - { pin: 5,  wire: BLU/RED, abbr: ACS,   name: A/C switch signal,              signal: "A/C ON: 0 V; OFF: 12 V" }
+      - { pin: 6,  wire: BLU/ORN, abbr: STS,   name: Starter switch signal,          signal: "cranking: 12 V; else 0 V" }
+      - { pin: 7,  wire: BRN,     abbr: SCS,   name: Service check signal,           signal: "jumpered: 0 V; open: ~5 V or 12 V" }
+      - { pin: 8,  wire: LT BLU,  abbr: K-LINE, name: K-line (DLC),                  signal: "key ON: ~5 V" }
+      - { pin: 9,  wire: GRY,     abbr: TMA,   name: TCM data out,                   signal: "key ON: pulses", applies: ["*3"] }
+      - { pin: 10, wire: WHT/BLU, abbr: VBU,   name: Backup power (DTC memory),      signal: "12 V at all times" }
+      - { pin: 11, wire: WHT/RED, abbr: CKFM,  name: CKF sensor ground }
+      - { pin: 12, wire: WHT,     abbr: CKPM,  name: CKP sensor ground }
+      - { pin: 13, wire: RED,     abbr: TDCM,  name: TDC sensor ground }
+      - { pin: 14, wire: BLK,     abbr: CYPM,  name: CYP sensor ground }
+      - { pin: 15, wire: BLU/BLK, abbr: VTM,   name: VTEC pressure switch,           signal: "low rpm: 0 V; high rpm: 12 V", applies: ["*12"] }
+      - { pin: 16, wire: GRN,     abbr: PSPSW, name: Power steering pressure switch, signal: "idle, wheel straight: 0 V; full lock: 12 V" }
+      - { pin: 17, wire: WHT/RED, abbr: ALTF,  name: Alternator FR signal,           signal: "warm, running: 0-12 V by electrical load" }
+      - { pin: 18, wire: BLU/WHT, abbr: VSS,   name: Vehicle speed sensor,           signal: "key ON, front wheels turning: 0-5 V pulses" }
+      - { pin: 23, wire: BLK,     abbr: IP+,   name: HO2S pump cell (+),             signal: "key ON: ~0.5-5.3 V", applies: ["*10"] }
+      - { pin: 24, wire: RED,     abbr: IP-/VS-, name: HO2S common,                  signal: "warm idle: ~2.6-2.8 V", applies: ["*10"] }
+      - { pin: 25, wire: WHT,     abbr: VS+,   name: HO2S cell voltage,              signal: "key ON: ~7 V", applies: ["*10"] }
+      - { pin: 29, wire: LT GRN,  abbr: ATPNP, name: A/T gear position switch (N/P), signal: "in N or P: 0 V; else 12 V", applies: ["*3"] }
+      - { pin: 29, wire: RED,     abbr: CLSW,  name: Clutch switch,                  signal: "released: ~5 V; pressed: 0 V", applies: ["*10"] }
+      - { pin: 30, wire: PNK,     abbr: TMB,   name: TCM data in,                    signal: "key ON: pulses", applies: ["*3"] }
+
+  - id: D
+    pins: 16
+    role: Analog sensors and sensor supplies
+    terminals:
+      - { pin: 1,  wire: RED/BLK, abbr: TPS,    name: Throttle position sensor,       signal: "closed: ~0.5 V; WOT: ~4.8 V" }
+      - { pin: 2,  wire: RED/WHT, abbr: ECT,    name: Engine coolant temp sensor,     signal: "key ON: ~0.1-4.8 V by temperature" }
+      - { pin: 3,  wire: RED/GRN, abbr: MAP,    name: Manifold absolute pressure,     signal: "key ON: ~3 V; idle: ~1.0 V" }
+      - { pin: 4,  wire: YEL/RED, abbr: VCC1,   name: MAP sensor 5 V supply,          signal: "key ON: ~5 V" }
+      - { pin: 5,  wire: GRN/WHT, abbr: BKSW,   name: Brake switch,                   signal: "released: 0 V; pressed: 12 V" }
+      - { pin: 6,  wire: RED/BLU, abbr: KS,     name: Knock sensor,                   signal: "knocking: pulses", applies: ["*7"] }
+      - { pin: 7,  wire: WHT,     abbr: PHO2S,  name: Primary O2 sensor (S1),         signal: "WOT warm: > 0.6 V; snap closed: < 0.4 V", applies: ["*11"] }
+      - { pin: 7,  wire: WHT,     abbr: LABEL,  name: LABEL resistor,                 signal: "running: ~0.3-4.9 V", applies: ["*10"] }
+      - { pin: 8,  wire: RED/YEL, abbr: IAT,    name: Intake air temp sensor,         signal: "key ON: ~0.1-4.8 V by temperature" }
+      - { pin: 9,  wire: WHT/BLK, abbr: EGRL,   name: EGR valve lift sensor,          signal: "no vacuum: ~1.2 V", applies: ["*3"] }
+      - { pin: 10, wire: YEL/BLU, abbr: VCC2,   name: Sensor 5 V supply,              signal: "key ON: ~5 V" }
+      - { pin: 11, wire: GRN/BLK, abbr: SG2,    name: Sensor ground 2,                signal: "< 1.0 V always" }
+      - { pin: 12, wire: GRN/WHT, abbr: SG1,    name: Sensor ground 1 (MAP),          signal: "< 1.0 V always" }
+      - { pin: 13, wire: GRN/BLK, abbr: SHO2SG, name: Secondary O2 sensor ground,     applies: ["*12"] }
+      - { pin: 13, wire: RED/YEL, abbr: SHO2SG, name: Secondary O2 sensor ground,     applies: ["*14"] }
+      - { pin: 14, wire: WHT/RED, abbr: SHO2S,  name: Secondary O2 sensor (S2),       signal: "WOT warm: > 0.6 V; snap closed: < 0.4 V" }
+      - { pin: 15, wire: LT GRN,  abbr: PTANK,  name: Fuel tank pressure sensor,      signal: "fuel cap open: ~2.5 V", applies: ["*8", "*15"] }
+      - { pin: 16, wire: GRN/RED, abbr: EL,     name: Electrical load detector,       signal: "idle + parking lights: 2.5-3.5 V; + low beams: 1.5-2.5 V", applies: ["*1"] }

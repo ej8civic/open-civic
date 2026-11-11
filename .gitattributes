@@ -1,0 +1,18 @@
+# Normalize text files
+* text=auto eol=lf
+*.png  binary
+*.jpg  binary
+*.glb  binary
+
+# Git LFS: archive files only (sources/). GitHub Pages cannot serve LFS
+# objects, so anything the site or simulator loads at runtime must stay
+# out of LFS (small images, .glb models under apps/ and docs/).
+sources/**/*.pdf   filter=lfs diff=lfs merge=lfs -text
+sources/**/*.epub  filter=lfs diff=lfs merge=lfs -text
+sources/**/*.zip   filter=lfs diff=lfs merge=lfs -text
+sources/**/*.png   filter=lfs diff=lfs merge=lfs -text
+sources/**/*.jpg   filter=lfs diff=lfs merge=lfs -text
+sources/**/*.tif   filter=lfs diff=lfs merge=lfs -text
+sources/**/*.stl   filter=lfs diff=lfs merge=lfs -text
+sources/**/*.step  filter=lfs diff=lfs merge=lfs -text
+sources/**/*.blend filter=lfs diff=lfs merge=lfs -text

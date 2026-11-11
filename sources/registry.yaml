@@ -1,0 +1,276 @@
+# Open Civic: source registry
+#
+# Every fact in docs/ and data/ must cite an `id` from this file.
+# CI rejects citations to sources whose status is not `approved`.
+#
+# trust:   A = official Honda / government
+#          B = open-source project with published files
+#          C = community reference site
+#          D = forum / social; used only as a lead to investigate, never as a spec
+# policy:  redistribute = file may be committed to sources/public (LFS)
+#          cite-only    = facts restated in our words + page citation; file stays in sources/private
+#          link-only    = link to it; do not copy text, images or files (license unknown/none)
+#          lead-only    = never cited as proof (trust D)
+
+sources:
+
+  # ── Official ────────────────────────────────────────────────────────────
+  - id: honda-sm-civic-96-00
+    title: Honda Civic 1996-2000 Service Manual
+    publisher: Honda Motor Co., Ltd.
+    date: 1998-08
+    url: https://archive.org/details/HondaCivic19962000
+    type: official
+    trust: A
+    license: "© Honda Motor Co. (all rights reserved)"
+    policy: cite-only
+    local: sources/private/honda-sm-civic-1996-2000.pdf
+    covers: { generations: [gen6], chassis: [EK, EJ, EM1], years: [1996, 2000], markets: [US] }
+    status: approved
+    approved_by: ej8civic
+    approved_on: 2026-11-11
+
+  - id: honda-sm-civic-92-95
+    title: Honda Civic 1992-1995 Service Manual
+    publisher: Honda Motor Co., Ltd.
+    type: official
+    trust: A
+    license: "© Honda Motor Co."
+    policy: cite-only
+    covers: { generations: [gen5], chassis: [EG, EH, EJ1] }
+    status: approved
+    approved_by: ej8civic
+    approved_on: 2026-11-11
+    notes: Not yet obtained.
+
+  - id: honda-sm-civic-01-05
+    title: Honda Civic 2001-2005 Service Manual
+    publisher: Honda Motor Co., Ltd.
+    type: official
+    trust: A
+    license: "© Honda Motor Co."
+    policy: cite-only
+    covers: { generations: [gen7], chassis: [ES, EM2], years: [2001, 2002] }
+    status: approved
+    approved_by: ej8civic
+    approved_on: 2026-11-11
+    notes: Not yet obtained.
+
+  - id: honda-owners-manuals
+    title: Honda Civic Owner's Manuals (US) and Manual do Proprietário (BR)
+    publisher: Honda Motor Co. / Honda Automóveis do Brasil
+    type: official
+    trust: A
+    license: "© Honda"
+    policy: cite-only
+    status: approved
+    approved_by: ej8civic
+    approved_on: 2026-11-11
+    notes: Not yet obtained. Primary source for maintenance intervals and fluids per market.
+
+  - id: nhtsa-recalls
+    title: NHTSA recalls, complaints and TSB database
+    publisher: US National Highway Traffic Safety Administration
+    url: https://www.nhtsa.gov/recalls
+    type: official
+    trust: A
+    license: US government work (public domain)
+    policy: redistribute
+    status: approved
+    approved_by: ej8civic
+    approved_on: 2026-11-11
+
+  # ── Open-source projects ───────────────────────────────────────────────
+  - id: rusefi
+    title: rusEFI open-source ECU (firmware, hardware, tools)
+    publisher: rusEFI project
+    url: https://github.com/rusefi/rusefi
+    local: sources/repos/rusefi   # git submodule
+    type: open-source
+    trust: B
+    license: GPL-3.0 + rusEFI terms (off-road use, not emissions-compliant, not for aircraft)
+    policy: redistribute
+    status: approved
+    approved_by: ej8civic
+    approved_on: 2026-11-11
+
+  - id: rusefi-wiki
+    title: rusEFI wiki (incl. "Vault of Honda OEM Information")
+    publisher: rusEFI project
+    url: https://wiki.rusefi.com/
+    type: open-source
+    trust: B
+    license: not stated (source repo rusefi/rusefi_documentation not yet checked)
+    policy: link-only
+    status: approved
+    approved_by: ej8civic
+    approved_on: 2026-11-11
+    notes: honda-oem-vault.md in this repo is a copy of a wiki page; treat as link-only until license is confirmed.
+
+  - id: rusefi-wiki-civic-1996
+    title: rusEFI wiki, Honda Civic 1996 (OBD2A pinout sheet + images)
+    publisher: rusEFI project (page edited by David Holdeman, 2023-01-07)
+    url: https://github.com/rusefi/rusefi/wiki/Honda-Civic-1996
+    type: open-source
+    trust: B
+    license: not stated
+    policy: link-only
+    local: cars/civic-ex-1996/adapters/
+    status: approved
+    approved_by: ej8civic
+    approved_on: 2026-11-11
+    notes: The local CSV and PNGs came from here. Pin B1-B25 is empty and several rows say "needs investigation". Cross-check against honda-sm-civic-96-00.
+
+  - id: proteus-honda-obd1
+    title: Proteus Honda OBD1 adapter (KiCad)
+    publisher: rusEFI project
+    url: https://github.com/rusefi/proteus-Honda-OBD1-adapter
+    local: sources/repos/proteus-honda-obd1   # git submodule
+    type: open-source
+    trust: B
+    license: none found
+    policy: link-only
+    covers: { ecu: [OBD1] }
+    status: approved
+    approved_by: ej8civic
+    approved_on: 2026-11-11
+    notes: README itself says "LOOKS PRETTY DEAD".
+
+  - id: proteus-honda-obd2a
+    title: Proteus Honda OBD2A adapter (KiCad, gerbers, BOM)
+    publisher: rusEFI project
+    url: https://github.com/rusefi/proteus-Honda-OBD2A-adapter
+    local: sources/repos/proteus-honda-obd2a   # git submodule
+    type: open-source
+    trust: B
+    license: none found
+    policy: link-only
+    covers: { ecu: [OBD2A] }
+    status: approved
+    approved_by: ej8civic
+    approved_on: 2026-11-11
+
+  - id: honda-diagnostic-suite
+    title: HondaDiagnosticSuite
+    publisher: huhwhatbruh (fork by rusEFI)
+    url: https://github.com/rusefi/HondaDiagnosticSuite
+    local: sources/repos/honda-diagnostic-suite   # git submodule
+    type: open-source
+    trust: B
+    license: GPL-3.0-or-later (vehicle database excluded)
+    policy: redistribute
+    status: approved
+    approved_by: ej8civic
+    approved_on: 2026-11-11
+    notes: Only confirmed on a 2015 Accord (J2534). Relevance to 1990-2002 Civics unproven.
+
+  - id: obdb-honda-civic
+    title: OBDb Honda-Civic signal sets
+    publisher: OBDb
+    url: https://github.com/OBDb/Honda-Civic
+    local: sources/repos/obdb-honda-civic   # git submodule
+    type: open-source
+    trust: B
+    license: CC-BY-SA-4.0
+    policy: redistribute
+    status: approved
+    approved_by: ej8civic
+    approved_on: 2026-11-11
+    notes: Same license as our docs. Only relevant to OBD2 cars (1996+).
+
+  - id: open-hcop
+    title: openHCOP, open coil-on-plug controller for Honda engines
+    publisher: icelord75
+    url: https://github.com/icelord75/openHCOP
+    local: sources/repos/open-hcop   # git submodule
+    type: open-source
+    trust: B
+    license: GPL-3.0
+    policy: redistribute
+    covers: { engines: [D-series, B-series, F-series, H-series], ecu: [OBD1] }
+    status: approved
+    approved_by: ej8civic
+    approved_on: 2026-11-11
+
+  - id: khalleb-headunit
+    title: honda-civic-headunit (skip "Aviso" screen)
+    publisher: khalleb
+    url: https://github.com/khalleb/honda-civic-headunit
+    local: sources/repos/khalleb-headunit   # git submodule
+    type: open-source
+    trust: B
+    license: MIT (code), CC-BY-4.0 (docs)
+    policy: redistribute
+    status: approved
+    approved_by: ej8civic
+    approved_on: 2026-11-11
+    notes: OUT OF SCOPE. Targets the Civic G10 (2016-2021, Brazil), not 1990-2002 cars. Kept for reference only.
+
+  # ── Community references ───────────────────────────────────────────────
+  - id: ff-squad-technet
+    title: ff-squad technet, Honda ECU wiring (OBD1 / OBD2A pinouts)
+    url: https://ff-squad.com/technet/
+    type: community
+    trust: C
+    license: not checked
+    policy: link-only
+    status: approved
+    approved_by: ej8civic
+    approved_on: 2026-11-11
+
+  - id: pgmfi-wiki
+    title: PGMFI.org wiki (Honda ECU chipping, OBD0/OBD1)
+    url: https://pgmfi.org/
+    type: community
+    trust: C
+    license: not checked
+    policy: link-only
+    status: approved
+    approved_by: ej8civic
+    approved_on: 2026-11-11
+
+  - id: hondata-docs
+    title: Hondata product documentation
+    publisher: Hondata Inc.
+    url: https://www.hondata.com/
+    type: vendor
+    trust: C
+    license: "© Hondata"
+    policy: cite-only
+    status: approved
+    approved_by: ej8civic
+    approved_on: 2026-11-11
+
+  - id: haynes-chilton
+    title: Haynes / Chilton Honda Civic repair manuals
+    type: vendor
+    trust: C
+    license: "© publisher"
+    policy: cite-only
+    status: approved
+    approved_by: ej8civic
+    approved_on: 2026-11-11
+    notes: Not yet obtained.
+
+  # ── Forums (leads only) ────────────────────────────────────────────────
+  - id: honda-tech-forum
+    title: honda-tech.com forums
+    url: https://honda-tech.com/
+    type: forum
+    trust: D
+    license: user content
+    policy: lead-only
+    status: approved
+    approved_by: ej8civic
+    approved_on: 2026-11-11
+
+  - id: d-series-forum
+    title: d-series.org forums
+    url: https://www.d-series.org/
+    type: forum
+    trust: D
+    license: user content
+    policy: lead-only
+    status: approved
+    approved_by: ej8civic
+    approved_on: 2026-11-11
